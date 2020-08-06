@@ -1,0 +1,75 @@
+{
+  "name": "serverless-aws-api-accelerator",
+  "version": "1.0.0",
+  "description": "Accelerator for developing rest apis with AWS Lambda and API Gateway using The Serverless Framework",
+  "main": "handler.js",
+  "scripts": {
+    "start": "export SLS_DEBUG=* && node --inspect node_modules/.bin/serverless offline start -s local",
+    "debug": "concurrently \"npm run start\" \"npm run test:watch\"",
+    "build": "npm run clean && tsc --project src/tsconfig.app.json",
+    "clean": "rimraf dist",
+    "lint": "eslint --ext .js,.ts --fix ./",
+    "prettier": "prettier --write '{,!(node_modules)/**/}*.{ts,js,json,md,yml}'",
+    "test": "ts-node -r tsconfig-paths/register -P src/tsconfig.spec.json node_modules/.bin/jasmine",
+    "test:watch": "nodemon --ext spec.ts --exec npm test",
+    "test:coverage": "ts-node  -r tsconfig-paths/register -P src/tsconfig.spec.json node_modules/.bin/nyc jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jacerrrr/serverless-aws-api-accelerator.git"
+  },
+  "keywords": [
+    "serverless",
+    "aws",
+    "api",
+    "gateway",
+    "lambda",
+    "typescript",
+    "webpack",
+    "accelerator"
+  ],
+  "author": "Jace Allison",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jacerrrr/serverless-aws-api-accelerator/issues"
+  },
+  "homepage": "https://github.com/jacerrrr/serverless-aws-api-accelerator#readme",
+  "devDependencies": {
+    "@istanbuljs/nyc-config-typescript": "^1.0.1",
+    "@types/aws-lambda": "^8.10.44",
+    "@types/jasmine": "^3.5.6",
+    "@types/node": "^13.7.4",
+    "@typescript-eslint/eslint-plugin": "^2.20.0",
+    "@typescript-eslint/parser": "^2.20.0",
+    "aws-sdk": "^2.626.0",
+    "concurrently": "^5.1.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-simple-import-sort": "^5.0.3",
+    "jasmine": "^3.5.0",
+    "jasmine-spec-reporter": "^5.0.2",
+    "moment": "^2.26.0",
+    "moment-locales-webpack-plugin": "^1.2.0",
+    "nodemon": "^2.0.2",
+    "nyc": "^15.0.0",
+    "prettier": "^1.19.1",
+    "rimraf": "^3.0.2",
+    "serverless": "^1.74.1",
+    "serverless-dynamodb-local": "^0.2.39",
+    "serverless-offline": "^5.12.1",
+    "serverless-webpack": "^5.3.1",
+    "ts-loader": "^6.2.1",
+    "ts-node": "^8.6.2",
+    "tsconfig-paths": "^3.9.0",
+    "tsconfig-paths-webpack-plugin": "^3.2.0",
+    "typescript": "^3.8.2",
+    "webpack": "^4.41.6",
+    "webpack-cli": "^3.3.11",
+    "webpack-node-externals": "^1.7.2"
+  },
+  "dependencies": {
+    "inversify": "^5.0.1",
+    "reflect-metadata": "^0.1.13"
+  }
+}

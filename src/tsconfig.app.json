@@ -1,0 +1,8 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "rootDir": ".",
+    "outDir": "../dist/app"
+  },
+  "exclude": ["**/*.spec.ts", "index.ts", "public_api.ts"]
+}
